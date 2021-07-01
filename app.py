@@ -36,6 +36,7 @@ def upload_file():
             results = []
             for name, (top, right, bottom, left) in predictions:
                 results.append(name)
+            os.remove(absolute_path)
             return jsonify({"result": results})
     return "error erick!"
 
