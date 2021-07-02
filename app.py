@@ -3,6 +3,7 @@ from flask import Flask, flash, request, redirect, url_for, jsonify
 from werkzeug.utils import secure_filename
 import face_recognition
 from face_recognition_knn import predict
+from pathlib import Path
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -18,6 +19,7 @@ def allowed_file(filename):
 def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
+        Path(app.config['UPLOAD_FOLDER']).mkdir(parents=True, exist_ok=True)
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
