@@ -2,7 +2,7 @@ import os
 from flask import Flask, flash, request, redirect, url_for, jsonify
 from werkzeug.utils import secure_filename
 import face_recognition
-from face_recognition_knn import predict
+from app.face_recognition_knn import predict
 from pathlib import Path
 
 UPLOAD_FOLDER = 'uploads'
@@ -41,8 +41,3 @@ def upload_file():
             os.remove(absolute_path)
             return jsonify({"result": results})
     return "error erick!"
-
-if __name__ == '__main__' :
-    app.secret_key = 'super secret key'
-    app.config['SESSION_TYPE'] = 'filesystem'
-    app.run(debug=True)
