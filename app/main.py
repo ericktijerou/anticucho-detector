@@ -40,4 +40,4 @@ def upload_file():
                 results.append(name)
             os.remove(absolute_path)
             return jsonify({"result": results})
-    return "error erick!"
+    return "error!"
